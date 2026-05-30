@@ -1,0 +1,232 @@
+@import "../../styles/index.scss";
+
+// Card Animations
+@keyframes cardHover {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-4px);
+  }
+}
+
+@keyframes imageZoom {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.05);
+  }
+}
+
+// Discover Card
+.discover-card {
+  background-color: $card-bg;
+  border-radius: $radius-lg;
+  overflow: hidden;
+  transition: $transition-base;
+  border: 1px solid $border-color;
+  cursor: pointer;
+  box-shadow: $shadow-sm;
+
+  &:hover {
+    animation: cardHover 0.3s ease-out forwards;
+    box-shadow: $shadow-lg;
+    border-color: $primary;
+
+    .card-overlay {
+      opacity: 1;
+    }
+
+    .card-image {
+      animation: imageZoom 0.4s ease-out forwards;
+    }
+  }
+
+  .card-image-wrapper {
+    position: relative;
+    width: 100%;
+    padding-bottom: 100%;
+    overflow: hidden;
+    background-color: lighten($card-bg, 5%);
+  }
+
+  .card-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: $transition-base;
+  }
+
+  .card-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: flex-end;
+    padding: $spacing-md;
+    opacity: 0;
+    transition: $transition-base;
+  }
+
+  .card-category {
+    display: inline-block;
+    background-color: $primary;
+    color: #000;
+    padding: 4px 8px;
+    border-radius: $radius-sm;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: capitalize;
+  }
+
+  .card-content {
+    padding: $spacing-md;
+  }
+
+  .card-title {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: $spacing-sm;
+    line-height: 1.4;
+  }
+
+  .card-description {
+    font-size: 13px;
+    color: $text-secondary;
+    margin-bottom: $spacing-md;
+    line-height: 1.5;
+  }
+
+  .card-meta {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-xs;
+    margin-bottom: $spacing-md;
+    font-size: 12px;
+    border-bottom: 1px solid $border-color;
+    padding-bottom: $spacing-md;
+  }
+
+  .card-author {
+    color: $primary;
+    font-weight: 500;
+
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+
+  .card-date {
+    color: $text-secondary;
+    font-size: 11px;
+  }
+
+  .card-stats {
+    display: flex;
+    gap: $spacing-md;
+    font-size: 12px;
+
+    .stat {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      color: $text-secondary;
+
+      .stat-icon {
+        font-size: 14px;
+      }
+    }
+  }
+}
+
+// Card Skeleton
+.card-skeleton {
+  background: linear-gradient(
+    90deg,
+    $card-bg 25%,
+    lighten($card-bg, 5%) 50%,
+    $card-bg 75%
+  );
+  background-size: 200% 100%;
+  animation: loading 1.5s infinite;
+  border-radius: $radius-lg;
+  aspect-ratio: 1;
+}
+
+// Stats Card
+.stats-card {
+  background-color: $card-bg;
+  border-radius: $radius-lg;
+  padding: $spacing-lg;
+  border: 1px solid $border-color;
+  transition: $transition-base;
+  animation: cardFadeIn 0.6s ease-out;
+
+  &:hover {
+    transform: translateY(-2px);
+    border-color: $primary;
+    box-shadow: $shadow-md;
+  }
+
+  .stats-card-header {
+    display: flex;
+    align-items: center;
+    gap: $spacing-md;
+    margin-bottom: $spacing-lg;
+  }
+
+  .stats-icon {
+    font-size: 24px;
+    line-height: 1;
+  }
+
+  .stats-label {
+    font-size: 12px;
+    color: $text-secondary;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .stats-card-value {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+  }
+
+  .value {
+    font-size: 28px;
+    font-weight: 700;
+    margin: 0;
+
+    .unit {
+      font-size: 14px;
+      color: $text-secondary;
+      margin-left: $spacing-xs;
+    }
+  }
+
+  .trend {
+    font-size: 12px;
+    font-weight: 600;
+    padding: 4px 8px;
+    border-radius: $radius-sm;
+
+    &.up {
+      color: $success;
+      background-color: rgba($success, 0.1);
+    }
+
+    &.down {
+      color: $danger;
+      background-color: rgba($danger, 0.1);
+    }
+  }
+}

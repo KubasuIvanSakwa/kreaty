@@ -1,0 +1,651 @@
+@import "../styles/index.scss";
+
+// Page Animations
+@keyframes pageSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes cardFadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes gridFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+// Page Headers
+.dashboard-header,
+.portfolio-header,
+.collaborations-header,
+.discover-header,
+.profile-header {
+  margin-bottom: $spacing-2xl;
+  animation: pageSlideIn 0.5s ease-out;
+}
+
+// Discover Page
+.discover-page {
+  min-height: 100vh;
+  background-color: $dark-bg;
+}
+
+.discover-content {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: $spacing-2xl $spacing-lg $spacing-lg;
+  animation: pageSlideIn 0.5s ease-out;
+}
+
+.discover-header {
+  text-align: center;
+  margin-bottom: $spacing-2xl;
+}
+
+.discover-controls {
+  margin-bottom: $spacing-2xl;
+}
+
+.search-bar {
+  position: relative;
+  margin-bottom: $spacing-lg;
+
+  .search-input {
+    width: 100%;
+    padding: $spacing-md $spacing-lg;
+    padding-right: 40px;
+    font-size: 16px;
+  }
+
+  .search-icon {
+    position: absolute;
+    right: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 18px;
+    color: $text-secondary;
+  }
+}
+
+.filter-tabs {
+  display: flex;
+  gap: $spacing-md;
+  overflow-x: auto;
+  padding-bottom: $spacing-md;
+
+  .filter-tab {
+    padding: $spacing-md $spacing-lg;
+    background-color: $card-bg;
+    border: 1px solid $border-color;
+    color: $text-secondary;
+    border-radius: $radius-md;
+    font-weight: 500;
+    cursor: pointer;
+    transition: $transition-base;
+    white-space: nowrap;
+
+    &:hover {
+      border-color: $primary;
+      color: $text-primary;
+    }
+
+    &.active {
+      background-color: $primary;
+      color: #000;
+      border-color: $primary;
+    }
+  }
+}
+
+.discover-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: $spacing-lg;
+  animation: gridFadeIn 0.6s ease-out;
+
+  > * {
+    animation: cardFadeIn 0.6s ease-out;
+  }
+}
+
+// Dashboard Page
+.dashboard-content {
+  .dashboard-header {
+    margin-bottom: $spacing-2xl;
+
+    h1 {
+      margin-bottom: $spacing-sm;
+    }
+  }
+
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: $spacing-lg;
+    margin-bottom: $spacing-2xl;
+  }
+
+  .dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+    gap: $spacing-lg;
+    margin-bottom: $spacing-2xl;
+  }
+}
+
+.dashboard-section {
+  background-color: $card-bg;
+  border-radius: $radius-lg;
+  border: 1px solid $border-color;
+  padding: $spacing-lg;
+}
+
+.section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: $spacing-lg;
+
+  h2 {
+    margin: 0;
+    font-size: 18px;
+  }
+
+  .badge {
+    background-color: $primary;
+    color: #000;
+  }
+}
+
+// Earnings Chart
+.earnings-chart {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-around;
+  height: 200px;
+  gap: $spacing-lg;
+}
+
+.chart-bar-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+}
+
+.chart-bar-wrapper {
+  width: 100%;
+  height: 150px;
+  background-color: lighten($card-bg, 3%);
+  border-radius: $radius-md $radius-md 0 0;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  margin-bottom: $spacing-md;
+}
+
+.chart-bar {
+  width: 60%;
+  background: linear-gradient(135deg, $primary, $secondary);
+  border-radius: $radius-md $radius-md 0 0;
+  transition: $transition-base;
+  cursor: pointer;
+
+  &:hover {
+    opacity: 0.8;
+  }
+}
+
+.chart-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: $text-secondary;
+}
+
+.chart-value {
+  font-size: 12px;
+  color: $text-secondary;
+  margin-top: 4px;
+}
+
+// Collaborations List
+.collaborations-list {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-md;
+}
+
+.collab-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: $spacing-md;
+  background-color: lighten($card-bg, 3%);
+  border-radius: $radius-md;
+  border: 1px solid $border-color;
+
+  .collab-info {
+    flex: 1;
+
+    h4 {
+      margin: 0 0 4px 0;
+      font-size: 14px;
+    }
+
+    .collab-title {
+      font-size: 12px;
+      margin: 0;
+    }
+
+    .collab-project {
+      font-size: 12px;
+      margin: 4px 0 0 0;
+    }
+  }
+
+  .collab-actions {
+    display: flex;
+    gap: $spacing-sm;
+  }
+}
+
+// Collaborations Page
+.collaborations-page {
+  .collaborations-content {
+    .collaborations-header {
+      margin-bottom: $spacing-lg;
+    }
+
+    .collab-filters {
+      display: flex;
+      gap: $spacing-md;
+      margin-bottom: $spacing-xl;
+      overflow-x: auto;
+      padding-bottom: $spacing-md;
+    }
+  }
+}
+
+.collaborations-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+  gap: $spacing-lg;
+}
+
+.collab-card {
+  background-color: $card-bg;
+  border: 1px solid $border-color;
+  border-radius: $radius-lg;
+  overflow: hidden;
+  transition: $transition-base;
+
+  &:hover {
+    border-color: $primary;
+    box-shadow: $shadow-md;
+  }
+
+  .collab-header {
+    padding: $spacing-lg;
+    border-bottom: 1px solid $border-color;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: $spacing-lg;
+  }
+
+  .collab-identity {
+    flex: 1;
+
+    h3 {
+      margin: 0 0 $spacing-sm 0;
+      font-size: 16px;
+    }
+
+    .collab-title {
+      margin: 0 0 4px 0;
+      font-size: 13px;
+    }
+
+    .collab-email {
+      margin: 0;
+      font-size: 12px;
+    }
+  }
+
+  .collab-body {
+    padding: $spacing-lg;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: $spacing-lg;
+
+    h4 {
+      margin: 0 0 $spacing-sm 0;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: $text-secondary;
+    }
+
+    p {
+      margin: 0;
+      font-size: 14px;
+    }
+  }
+
+  .collab-actions {
+    display: flex;
+    gap: $spacing-md;
+    padding: $spacing-lg;
+    border-top: 1px solid $border-color;
+  }
+}
+
+// Portfolio Page
+.portfolio-page {
+  .portfolio-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: $spacing-lg;
+    margin-bottom: $spacing-2xl;
+  }
+
+  .portfolio-upload-section {
+    margin-bottom: $spacing-2xl;
+
+    .upload-cta {
+      width: 100%;
+      padding: $spacing-2xl;
+      background: linear-gradient(135deg, rgba($primary, 0.1), rgba($secondary, 0.1));
+      border: 2px dashed $primary;
+      border-radius: $radius-lg;
+      cursor: pointer;
+      transition: $transition-base;
+      color: $text-primary;
+      text-align: center;
+
+      &:hover {
+        background: linear-gradient(135deg, rgba($primary, 0.15), rgba($secondary, 0.15));
+        border-color: $secondary;
+      }
+
+      .upload-icon {
+        display: block;
+        font-size: 32px;
+        margin-bottom: $spacing-md;
+        color: $primary;
+      }
+
+      h3 {
+        margin: 0 0 $spacing-sm 0;
+        font-size: 18px;
+      }
+
+      p {
+        margin: 0;
+      }
+    }
+  }
+
+  .portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: $spacing-lg;
+  }
+}
+
+// Public Profile Page
+.public-profile-page {
+  min-height: 100vh;
+  background-color: $dark-bg;
+}
+
+.public-profile-content {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: $spacing-lg;
+}
+
+.profile-header {
+  margin-bottom: $spacing-2xl;
+}
+
+.profile-cover {
+  width: 100%;
+  height: 300px;
+  background: linear-gradient(135deg, rgba($primary, 0.2), rgba($secondary, 0.2));
+  border-radius: $radius-lg $radius-lg 0 0;
+  margin-bottom: -80px;
+}
+
+.profile-info {
+  background-color: $card-bg;
+  border: 1px solid $border-color;
+  border-radius: $radius-lg;
+  padding: $spacing-lg;
+  padding-top: 80px;
+  display: flex;
+  gap: $spacing-xl;
+  align-items: flex-start;
+  margin-bottom: $spacing-2xl;
+}
+
+.profile-avatar-large {
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, $primary, $secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 48px;
+  font-weight: 700;
+  flex-shrink: 0;
+  margin-top: -120px;
+}
+
+.profile-details {
+  flex: 1;
+
+  .profile-name {
+    font-size: 32px;
+    margin: 0 0 $spacing-sm 0;
+  }
+
+  .profile-username {
+    font-size: 16px;
+    color: $primary;
+    margin: 0 0 $spacing-sm 0;
+  }
+
+  .profile-title {
+    font-size: 16px;
+    margin: 0 0 $spacing-md 0;
+  }
+
+  .profile-date {
+    font-size: 13px;
+    color: $text-secondary;
+    margin: 0;
+  }
+}
+
+.profile-actions {
+  display: flex;
+  gap: $spacing-md;
+  align-items: flex-start;
+
+  button {
+    min-width: 120px;
+  }
+}
+
+.profile-meta {
+  margin-bottom: $spacing-2xl;
+}
+
+.profile-events {
+  h3 {
+    margin-bottom: $spacing-md;
+  }
+
+  .events-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: $spacing-md;
+
+    .tag {
+      display: inline-block;
+      padding: $spacing-sm $spacing-md;
+      background-color: $card-bg;
+      border: 1px solid $border-color;
+      border-radius: $radius-md;
+      font-size: 13px;
+      color: $text-primary;
+    }
+  }
+}
+
+.profile-works {
+  section {
+    margin-bottom: $spacing-2xl;
+
+    h2 {
+      margin-bottom: $spacing-lg;
+    }
+  }
+}
+
+.featured-works,
+.all-works {
+  .portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: $spacing-lg;
+  }
+}
+
+// Loading Page
+.loading-page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: $dark-bg;
+  color: $text-secondary;
+}
+
+// Error State
+.error-state {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 400px;
+  text-align: center;
+  color: $danger;
+}
+
+// Responsive
+@media (max-width: $breakpoint-lg) {
+  .discover-grid {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  }
+
+  .portfolio-grid,
+  .featured-works .portfolio-grid,
+  .all-works .portfolio-grid {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  }
+
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .collaborations-list {
+    grid-template-columns: 1fr;
+  }
+
+  .profile-info {
+    flex-direction: column;
+  }
+
+  .profile-actions {
+    width: 100%;
+
+    button {
+      flex: 1;
+    }
+  }
+}
+
+@media (max-width: $breakpoint-md) {
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .discover-grid,
+  .portfolio-grid,
+  .featured-works .portfolio-grid,
+  .all-works .portfolio-grid {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  }
+
+  .filter-tabs {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+  }
+
+  .profile-avatar-large {
+    width: 120px;
+    height: 120px;
+    font-size: 36px;
+    margin-top: -60px;
+  }
+
+  .profile-cover {
+    height: 200px;
+  }
+
+  .profile-info {
+    margin-bottom: $spacing-lg;
+    padding-top: 60px;
+  }
+}
+
+@media (max-width: $breakpoint-sm) {
+  .discover-grid,
+  .portfolio-grid,
+  .featured-works .portfolio-grid,
+  .all-works .portfolio-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .profile-actions {
+    flex-direction: column;
+  }
+
+  .earnings-chart {
+    gap: $spacing-sm;
+  }
+}

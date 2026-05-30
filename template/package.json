@@ -1,0 +1,26 @@
+{
+  "name": "kreaty-frontend-template",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Production-grade React + Vite starter template for kreaty frontend",
+  "main": "src/index.jsx",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "lint": "eslint src --ext .jsx,.js"
+  },
+  "dependencies": {
+    "react": "^19.2.6",
+    "react-dom": "^19.2.6",
+    "react-router-dom": "^6.20.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^6.0.1",
+    "vite": "^8.0.12",
+    "sass": "^1.69.0",
+    "eslint": "^10.3.0",
+    "eslint-plugin-react": "^7.33.0",
+    "eslint-plugin-react-hooks": "^7.1.1"
+  }
+}
